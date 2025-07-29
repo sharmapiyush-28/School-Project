@@ -1,157 +1,116 @@
+/* Fonts and Base Styles */
 body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(to right, #6EE7B7, #34D399); /* Bright, inviting color scheme */
-            overflow: hidden; /* Hide overflow during initial animations */
-            position: relative; /* For background animation */
-        }
+    font-family: 'Inter', sans-serif;
+    background-image: url(arturo-rey-Uk2b7mxBi9E-unsplash.jpg);
+    transition: background 0.5s ease-in-out;
+}
 
-        /* Background animation */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #6EE7B7, #34D399, #10B981, #059669);
-            background-size: 400% 400%;
-            animation: gradient-animation 15s ease infinite;
-            z-index: -1; /* Send to background */
-        }
+/* Container Styling */
+.login-container {
+    animation: fadeInUp 1s ease-out;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+}
 
-        @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+/* Input Fields */
+input.input-field {
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+}
 
-        .login-container {
-            background-color: #ffffff;
-            border-radius: 1.5rem; /* Rounded corners */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            padding: 2.5rem;
-            max-width: 28rem; /* Constrain width for better mobile experience */
-            width: 90%; /* Fluid width */
-            opacity: 0; /* Start hidden for animation */
-            transform: translateY(20px); /* Start slightly below for animation */
-            animation: fade-in-up 0.8s ease-out forwards;
-            animation-delay: 0.2s; /* Delay for overall container */
-            position: relative; /* Ensure it's above the background */
-            z-index: 1;
-        }
-        .input-field {
-            border-radius: 0.75rem; /* Rounded corners for input fields */
-            padding: 0.75rem 1rem;
-            border: 1px solid #D1D5DB; /* Light gray border */
-            width: 100%;
-            font-size: 1rem;
-            opacity: 0; /* Start hidden for animation */
-            transform: translateX(-20px); /* Start left for animation */
-            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* For hover effect */
-        }
-        .input-field:hover {
-            border-color: #34D399; /* Green border on hover */
-            box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2); /* Subtle glow */
-        }
-        .input-field:focus {
-            outline: none;
-            border-color: #10B981;
-            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
-        }
-        .login-button {
-            background-color: #10B981; /* Green button */
-            color: #ffffff;
-            border-radius: 0.75rem;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            opacity: 0; /* Start hidden for animation */
-            transform: translateY(20px); /* Start slightly below for animation */
-            overflow: hidden; /* For sparkle effect */
-            position: relative;
-        }
-        .login-button:hover {
-            background-color: #059669; /* Darker green on hover */
-            transform: scale(1.02); /* Slight scale on hover */
-        }
-        .login-button:active {
-            transform: scale(0.98); /* Slight press effect on click */
-        }
-        .link-text {
-            color: #10B981; /* Green link color */
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.2s ease;
-            opacity: 0; /* Start hidden for animation */
-            transform: translateY(10px); /* Start slightly below for animation */
-        }
-        .link-text:hover {
-            color: #059669; /* Darker green on hover */
-            transform: scale(1.05);
-        }
-        .logo-illustration {
-            opacity: 0; /* Start hidden for animation */
-            transform: scale(0.8); /* Start smaller for pop-in */
-            animation: pop-in 0.6s ease-out forwards;
-            animation-delay: 0.4s; /* Delay for logo and illustration */
-        }
+input.input-field:focus {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+}
 
-        /* Keyframe Animations */
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* Login Button */
+.login-button {
+    background-color: #10b981;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
 
-        @keyframes pop-in {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
+.login-button:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.25);
+}
 
-        @keyframes slide-in-left {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
+/* Link Text */
+a.link-text {
+    color: #10b981;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
 
-        @keyframes text-reveal {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+a.link-text:hover {
+    color: #059669;
+    text-decoration: underline;
+}
 
-        .animated-text span {
-            display: inline-block; /* Allows individual animation */
-            opacity: 0;
-            transform: translateY(10px);
-        }
+/* Illustrations and Logo */
+.logo-illustration {
+    transition: transform 0.4s ease;
+}
 
-        /* Sparkle animation for button icon */
-        .login-button svg {
-            animation: sparkle 1.5s infinite ease-in-out;
-        }
+.logo-illustration:hover {
+    transform: scale(1.05) rotate(1deg);
+}
 
-        @keyframes sparkle {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-        }
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseButton {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Parent Button Special Style */
+.login-container button[type="button"] {
+    font-weight: 600;
+    background-color: #f3f4f6;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button[type="button"]:hover {
+    background-color: #e5e7eb;
+    transform: translateY(-1px);
+}
+
+/* Fade animation for left panel */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fadeInLeft {
+    animation: fadeInLeft 1.2s ease-out;
+}
