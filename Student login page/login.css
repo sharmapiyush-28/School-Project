@@ -1,0 +1,157 @@
+body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #6EE7B7, #34D399); /* Bright, inviting color scheme */
+            overflow: hidden; /* Hide overflow during initial animations */
+            position: relative; /* For background animation */
+        }
+
+        /* Background animation */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #6EE7B7, #34D399, #10B981, #059669);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+            z-index: -1; /* Send to background */
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* Rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            max-width: 28rem; /* Constrain width for better mobile experience */
+            width: 90%; /* Fluid width */
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(20px); /* Start slightly below for animation */
+            animation: fade-in-up 0.8s ease-out forwards;
+            animation-delay: 0.2s; /* Delay for overall container */
+            position: relative; /* Ensure it's above the background */
+            z-index: 1;
+        }
+        .input-field {
+            border-radius: 0.75rem; /* Rounded corners for input fields */
+            padding: 0.75rem 1rem;
+            border: 1px solid #D1D5DB; /* Light gray border */
+            width: 100%;
+            font-size: 1rem;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateX(-20px); /* Start left for animation */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* For hover effect */
+        }
+        .input-field:hover {
+            border-color: #34D399; /* Green border on hover */
+            box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2); /* Subtle glow */
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #10B981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+        }
+        .login-button {
+            background-color: #10B981; /* Green button */
+            color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(20px); /* Start slightly below for animation */
+            overflow: hidden; /* For sparkle effect */
+            position: relative;
+        }
+        .login-button:hover {
+            background-color: #059669; /* Darker green on hover */
+            transform: scale(1.02); /* Slight scale on hover */
+        }
+        .login-button:active {
+            transform: scale(0.98); /* Slight press effect on click */
+        }
+        .link-text {
+            color: #10B981; /* Green link color */
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+            opacity: 0; /* Start hidden for animation */
+            transform: translateY(10px); /* Start slightly below for animation */
+        }
+        .link-text:hover {
+            color: #059669; /* Darker green on hover */
+            transform: scale(1.05);
+        }
+        .logo-illustration {
+            opacity: 0; /* Start hidden for animation */
+            transform: scale(0.8); /* Start smaller for pop-in */
+            animation: pop-in 0.6s ease-out forwards;
+            animation-delay: 0.4s; /* Delay for logo and illustration */
+        }
+
+        /* Keyframe Animations */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pop-in {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slide-in-left {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes text-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated-text span {
+            display: inline-block; /* Allows individual animation */
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* Sparkle animation for button icon */
+        .login-button svg {
+            animation: sparkle 1.5s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
