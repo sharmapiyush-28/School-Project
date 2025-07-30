@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="profile.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+</head>
+
+<body>
+  <header>
+    <div><a href="dashboard.html">⬅️ Back to Dashboard</a></div>
+    <div><a href="#">👤 My Profile</a></div>
+  </header>
+
+  <div class="container fade-in">
+    <div class="grid-2 section">
+      <div class="fade-up">
+        <img class="avatar" src="IMG_20240704_111210-removebg-preview.png" alt="Student Photo">
+        <p><strong>Name:</strong> Piyush Sharma</p>
+        <p><strong>Grade:</strong> 12</p>
+        <p><strong>Class:</strong> 12A</p>
+        <p><strong>School ID:</strong> S12345</p>
+      </div>
+      <div class="fade-up">
+        <h2>Progress Tracker</h2>
+        <p><strong>Overall Completion:</strong></p>
+        <div class="bar">
+          <div class="bar-inner animate-bar" style="width:65%">65%</div>
+        </div>
+        <p><strong>Skills Mastered:</strong> Fractions, Cells</p>
+      </div>
+    </div>
+
+    <div class="grid-2 section fade-up">
+      <div>
+        <h2>Time Spent This Week</h2>
+        <div class="chart-container">
+          <canvas id="timeDoughnutChart"></canvas>
+        </div>
+      </div>
+      <div>
+        <h2>🔥 7-Day Streak!</h2>
+        <p>[Streak visual placeholder]</p>
+      </div>
+    </div>
+
+    <div class="section fade-up">
+      <h2>🏅 My Achievements & Badges</h2>
+      <div class="badge">Completed First Lesson</div>
+      <div class="badge">100 Hours Club</div>
+      <div class="badge grey">Science Master (Locked)</div>
+      <div class="badge grey">Math Genius (Locked)</div>
+    </div>
+
+    <div class="section fade-up">
+      <h2>📊 Class Attendance</h2>
+      <p>Total Classes Held: <span id="classesHeld">40</span></p>
+      <p>Classes Attended: <span id="classesAttended">36</span></p>
+      <p>Attendance %: <span id="attendancePercent">90%</span></p>
+    </div>
+  </div>
+
+  <div class="footer">© 2025 Student LMS Dashboard</div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

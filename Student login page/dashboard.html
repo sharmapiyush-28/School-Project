@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  </head>
-<body>
 
+  <!-- Link your custom CSS -->
+  <link rel="stylesheet" href="dashboard.css" />
+
+  <!-- Font Awesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
   <header class="dashboard-header">
     <div class="user-info">
       <h1>Hello, <span class="student-name">Piyush Sharma</span>!</h1>
@@ -16,9 +19,26 @@
     <div class="profile-section">
       <div class="stats">
         <span><i class="fas fa-star"></i> 1500 Pts</span>
-        <span class="notification"><i class="fas fa-bell"></i> (5)</span>
+        <div class="notification" onclick="toggleNotificationBox()">
+          <i class="fas fa-bell"></i>
+          <span class="notif-count">(5)</span>
+          <div class="notification-box" id="notificationBox">
+            <h4>Notifications</h4>
+            <ul>
+              <li>📚 Math Quiz on Aug 15</li>
+              <li>🧠 New Brain Boost Available</li>
+              <li>📨 Message from Teacher</li>
+              <li>✅ English course is 80% done</li>
+              <li>🎯 Streak at 7 Days</li>
+            </ul>
+            <button id="markReadBtn">Mark All as Read</button>
+          </div>
+        </div>
+        <span title="Current Streak 🔥">
+          <i>🔥 7</i>
+        </span>
       </div>
-      <a href="#" class="profile">
+      <a href="profile.html" class="profile">
         <img src="IMG_20240704_111210-removebg-preview.png" alt="Profile" class="profile-img" />
       </a>
     </div>
@@ -34,37 +54,52 @@
       <div class="subject-grid">
         <div class="card">
           <h3>Math</h3>
-          <p>70% Complete</p>
-          <div class="progress-bar-container">
-            <div class="progress-fill" data-progress="70"></div>
+          <div class="circular-progress" data-progress="70">
+            <svg>
+              <circle cx="40" cy="40" r="35"></circle>
+              <circle class="progress-ring" cx="40" cy="40" r="35"></circle>
+            </svg>
+            <div class="progress-value">0%</div>
           </div>
           <button onclick="viewSubject('Math')">View Subject</button>
         </div>
+
         <div class="card">
           <h3>Science</h3>
-          <p>55% Complete</p>
-          <div class="progress-bar-container">
-            <div class="progress-fill" data-progress="55"></div>
+          <div class="circular-progress" data-progress="55">
+            <svg>
+              <circle cx="40" cy="40" r="35"></circle>
+              <circle class="progress-ring" cx="40" cy="40" r="35"></circle>
+            </svg>
+            <div class="progress-value">0%</div>
           </div>
           <button onclick="viewSubject('Science')">View Subject</button>
         </div>
+
         <div class="card">
           <h3>English</h3>
-          <p>80% Complete</p>
-          <div class="progress-bar-container">
-            <div class="progress-fill" data-progress="80"></div>
+          <div class="circular-progress" data-progress="80">
+            <svg>
+              <circle cx="40" cy="40" r="35"></circle>
+              <circle class="progress-ring" cx="40" cy="40" r="35"></circle>
+            </svg>
+            <div class="progress-value">0%</div>
           </div>
           <button onclick="viewSubject('English')">View Subject</button>
         </div>
+
         <div class="card">
           <h3>History</h3>
-          <p>40% Complete</p>
-          <div class="progress-bar-container">
-            <div class="progress-fill" data-progress="40"></div>
+          <div class="circular-progress" data-progress="40">
+            <svg>
+              <circle cx="40" cy="40" r="35"></circle>
+              <circle class="progress-ring" cx="40" cy="40" r="35"></circle>
+            </svg>
+            <div class="progress-value">0%</div>
           </div>
           <button onclick="viewSubject('History')">View Subject</button>
         </div>
-        </div>
+      </div>
     </section>
 
     <section class="features">
@@ -75,22 +110,22 @@
       </div>
       <div class="feature">
         <h3>🔥 My Streak: 7 Days!</h3>
-        <p>Solve daily thinking problem to keep your streak alive!</p>
+        <p>Keep your streak alive with daily questions!</p>
         <button onclick="goToSection('Streak')">Boost Streak</button>
       </div>
       <div class="feature">
         <h3>🤖 AI Study Buddy</h3>
-        <p>Need help? Ask me!</p>
+        <p>Need help? Ask your buddy!</p>
         <button onclick="chatNow()">Chat Now</button>
       </div>
       <div class="feature">
-        <h3>📅 School Calendar</h3>
+        <h3>🗕️ School Calendar</h3>
         <p>Upcoming: Math Quiz (Aug 15)</p>
         <button onclick="viewFullCalendar()">View Full Calendar</button>
       </div>
       <div class="feature">
         <h3>🤝 Help a Peer</h3>
-        <p>See who needs help!</p>
+        <p>Support your classmates!</p>
         <button onclick="goToSection('Peer Help')">Go to Section</button>
       </div>
     </section>
@@ -100,6 +135,52 @@
     <p>&copy; 2025 Student Dashboard. All rights reserved.</p>
   </footer>
 
+  <script>
+    function toggleNotificationBox() {
+      const box = document.getElementById('notificationBox');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    document.addEventListener('click', function (e) {
+      const notif = document.querySelector('.notification');
+      const box = document.getElementById('notificationBox');
+      if (!notif.contains(e.target)) {
+        box.style.display = 'none';
+      }
+    });
+
+    // Animate circular progress bars on load
+    document.addEventListener("DOMContentLoaded", () => {
+      const circles = document.querySelectorAll(".circular-progress");
+
+      circles.forEach((circleWrapper) => {
+        const value = parseInt(circleWrapper.getAttribute("data-progress"));
+        const circle = circleWrapper.querySelector(".progress-ring");
+        const text = circleWrapper.querySelector(".progress-value");
+
+        const radius = circle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+        circle.style.strokeDasharray = `${circumference}`;
+        circle.style.strokeDashoffset = `${circumference}`;
+        circle.style.stroke = "#4caf50";
+        circle.style.fill = "none";
+        circle.style.strokeWidth = "10";
+        circle.style.transition = "stroke-dashoffset 1.5s ease";
+
+        let current = 0;
+        const step = () => {
+          if (current <= value) {
+            const offset = circumference - (current / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+            text.textContent = `${current}%`;
+            current++;
+            setTimeout(step, 15);
+          }
+        };
+        step();
+      });
+    });
+  </script>
   <script src="dashboard.js"></script>
 </body>
 </html>
