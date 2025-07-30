@@ -1,0 +1,360 @@
+body {
+margin: 0;
+padding: 0;
+font-family: 'Segoe UI', sans-serif;
+background-image: url('arturo-rey-Uk2b7mxBi9E-unsplash.jpg'); / Your desired background image /
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed; / Keeps background fixed when scrolling /
+color: #333; / Default text color changed to dark */
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+}
+/* Reduce the darkness of the overlay significantly or remove it /
+body::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.2); / Very subtle dark overlay */
+z-index: -1;
+}
+
+/* === HEADER === /
+.dashboard-header {
+background: rgba(255, 255, 255, 0.85); / Lighter, semi-transparent white header /
+color: #333; / Dark text on light header /
+padding: 20px 40px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); / Subtle shadow */
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+.user-info h1 {
+margin: 0;
+font-size: 32px;
+color: #333; /* Dark text /
+text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05); / Very subtle text shadow */
+animation: fadeInDown 1s ease;
+}
+
+.profile-section {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
+.profile-img {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+object-fit: cover;
+border: 2px solid #333; /* Dark border /
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); / Subtle shadow */
+}
+
+.stats {
+display: flex;
+align-items: center;
+gap: 15px;
+}
+
+.stats span {
+font-weight: bold;
+color: #ffc107; /* Use a more standard gold/amber */
+font-size: 18px;
+}
+
+.notification {
+cursor: pointer;
+}
+
+.notification i {
+transition: transform 0.3s ease;
+color: #333; /* Dark bell icon */
+}
+
+/* === QUOTE (Marquee) === /
+.quote {
+margin: 30px 0 40px;
+overflow: hidden;
+white-space: nowrap;
+position: relative;
+height: 30px;
+background-color: rgba(255, 255, 255, 0.7); / Lighter background for the quote /
+padding: 5px 0;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+color: #555; / Darker quote text */
+}
+
+.quote p {
+display: inline-block;
+font-style: italic;
+font-size: 1.1em;
+color: #555;
+padding-left: 100%;
+animation: marquee 25s linear infinite;
+text-shadow: none; /* Removed text shadow for clarity */
+}
+
+/* === SUBJECTS SECTION === /
+.subjects h2 {
+text-align: center;
+color: #333; / Dark heading */
+margin-top: 30px;
+font-size: 36px;
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+animation: fadeInUp 1s ease;
+}
+
+.subject-grid {
+display: flex;
+justify-content: center;
+gap: 25px;
+flex-wrap: wrap;
+padding: 30px;
+}
+
+.card {
+background-color: rgba(255, 255, 255, 0.9); /* Lighter card background /
+color: #333; / Dark text on cards /
+border-radius: 16px;
+padding: 25px;
+width: 220px;
+text-align: center;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); / Less intense shadow /
+transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+position: relative;
+overflow: hidden;
+border: 1px solid rgba(0, 0, 0, 0.05); / Very subtle dark border /
+opacity: 0;
+transform: scale(0.95) translateY(10px); / Less dramatic initial state */
+}
+
+.card h3 {
+font-size: 24px;
+margin-bottom: 10px;
+color: #2196f3; /* A brighter blue for subject titles */
+}
+
+.card p {
+font-size: 1.1em;
+margin-bottom: 15px;
+color: #555; /* Darker completion text */
+}
+
+.card:hover {
+transform: translateY(-8px) scale(1.02); /* Less extreme hover effect /
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); / Moderate shadow on hover */
+}
+
+.card button {
+margin-top: 15px;
+padding: 10px 18px;
+background-color: #2196f3; /* Brighter blue for buttons */
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+font-size: 16px;
+letter-spacing: 0.5px;
+transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card button:hover {
+background-color: #0b7dda; /* Darker blue on hover */
+transform: translateY(-2px);
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card button:active {
+transform: translateY(0);
+}
+
+/* Progress bar styling /
+.progress-bar-container {
+width: 100%;
+background-color: #ddd; / Light grey track for progress */
+border-radius: 5px;
+height: 10px;
+margin-top: 10px;
+overflow: hidden;
+}
+
+.progress-fill {
+height: 100%;
+background-color: #8bc34a; /* A more vibrant green for fill */
+border-radius: 5px;
+width: 0%;
+}
+
+/* === FEATURES === */
+.features {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 25px;
+padding: 30px;
+margin-bottom: 40px;
+}
+
+.feature {
+background-color: rgba(255, 255, 255, 0.9); /* Lighter feature cards */
+color: #333;
+padding: 25px;
+border-radius: 16px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+opacity: 0;
+transform: scale(0.95) translateY(10px);
+}
+
+.feature h3 {
+font-size: 22px;
+margin-bottom: 10px;
+color: #2196f3;
+}
+
+.feature p {
+font-size: 1.05em;
+line-height: 1.5;
+color: #555;
+}
+
+.feature:hover {
+transform: scale(1.01) translateY(-5px); /* Even less aggressive hover */
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature button {
+margin-top: 20px;
+padding: 10px 18px;
+background-color: #2196f3;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+font-size: 16px;
+letter-spacing: 0.5px;
+transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.feature button:hover {
+background-color: #0b7dda;
+transform: translateY(-2px);
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.feature button:active {
+transform: translateY(0);
+}
+
+/* Footer /
+.dashboard-footer {
+text-align: center;
+padding: 20px;
+color: #777; / Medium grey footer text /
+font-size: 0.9em;
+background-color: rgba(255, 255, 255, 0.8); / Lighter footer */
+margin-top: auto;
+box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* === ANIMATIONS === */
+@keyframes marquee {
+0% { transform: translateX(100%); }
+100% { transform: translateX(-100%); }
+}
+
+@keyframes fadeInDown {
+from { opacity: 0; transform: translateY(-20px); } /* Less dramatic fade in */
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(20px); } /* Less dramatic fade up */
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* New Animations (Adjusted for less intensity) */
+@keyframes cardPopIn {
+0% { opacity: 0; transform: scale(0.9) translateY(10px); }
+100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes progressBarFill {
+from { width: 0%; }
+to { width: var(--progress-width, 100%); }
+}
+
+@keyframes nameHighlight {
+0% { transform: translateY(0); filter: brightness(1); }
+50% { transform: translateY(-2px); filter: brightness(1.05); }
+100% { transform: translateY(0); filter: brightness(1); }
+}
+
+/* Font Awesome Bell Shake/Beat */
+@keyframes fa-beat {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.1); }
+}
+
+.notification i.fa-beat {
+animation: fa-beat 0.8s ease-in-out infinite; /* Softer, continuous beat */
+}
+
+/* Responsive Adjustments (No changes needed unless further issues arise) */
+@media (max-width: 768px) {
+.dashboard-header {
+flex-direction: column;
+align-items: flex-start;
+padding: 15px 20px;
+}
+
+.user-info h1 {
+font-size: 24px;
+margin-bottom: 10px;
+}
+
+.profile-section {
+width: 100%;
+justify-content: space-between;
+margin-top: 10px;
+}
+
+.subject-grid, .features {
+padding: 20px;
+gap: 15px;
+}
+
+.card, .feature {
+width: 100%;
+max-width: 300px;
+}
+}
+
+@media (max-width: 480px) {
+.dashboard-header {
+padding: 10px 15px;
+}
+
+.user-info h1 {
+font-size: 22px;
+}
+
+.stats span {
+font-size: 16px;
+}
+}

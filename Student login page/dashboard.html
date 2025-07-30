@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  </head>
+<body>
+
+  <header class="dashboard-header">
+    <div class="user-info">
+      <h1>Hello, <span class="student-name">Piyush Sharma</span>!</h1>
+    </div>
+    <div class="profile-section">
+      <div class="stats">
+        <span><i class="fas fa-star"></i> 1500 Pts</span>
+        <span class="notification"><i class="fas fa-bell"></i> (5)</span>
+      </div>
+      <a href="#" class="profile">
+        <img src="IMG_20240704_111210-removebg-preview.png" alt="Profile" class="profile-img" />
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="quote">
+      <p>"The beautiful thing about learning is that no one can take it away from you." - B.B. King</p>
+    </section>
+
+    <section class="subjects">
+      <h2>📚 My Subjects</h2>
+      <div class="subject-grid">
+        <div class="card">
+          <h3>Math</h3>
+          <p>70% Complete</p>
+          <div class="progress-bar-container">
+            <div class="progress-fill" data-progress="70"></div>
+          </div>
+          <button onclick="viewSubject('Math')">View Subject</button>
+        </div>
+        <div class="card">
+          <h3>Science</h3>
+          <p>55% Complete</p>
+          <div class="progress-bar-container">
+            <div class="progress-fill" data-progress="55"></div>
+          </div>
+          <button onclick="viewSubject('Science')">View Subject</button>
+        </div>
+        <div class="card">
+          <h3>English</h3>
+          <p>80% Complete</p>
+          <div class="progress-bar-container">
+            <div class="progress-fill" data-progress="80"></div>
+          </div>
+          <button onclick="viewSubject('English')">View Subject</button>
+        </div>
+        <div class="card">
+          <h3>History</h3>
+          <p>40% Complete</p>
+          <div class="progress-bar-container">
+            <div class="progress-fill" data-progress="40"></div>
+          </div>
+          <button onclick="viewSubject('History')">View Subject</button>
+        </div>
+        </div>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <h3>🧠 Daily Brain Boost</h3>
+        <p>Solve today's puzzle!</p>
+        <button onclick="playNow()">Play Now</button>
+      </div>
+      <div class="feature">
+        <h3>🔥 My Streak: 7 Days!</h3>
+        <p>Solve daily thinking problem to keep your streak alive!</p>
+        <button onclick="goToSection('Streak')">Boost Streak</button>
+      </div>
+      <div class="feature">
+        <h3>🤖 AI Study Buddy</h3>
+        <p>Need help? Ask me!</p>
+        <button onclick="chatNow()">Chat Now</button>
+      </div>
+      <div class="feature">
+        <h3>📅 School Calendar</h3>
+        <p>Upcoming: Math Quiz (Aug 15)</p>
+        <button onclick="viewFullCalendar()">View Full Calendar</button>
+      </div>
+      <div class="feature">
+        <h3>🤝 Help a Peer</h3>
+        <p>See who needs help!</p>
+        <button onclick="goToSection('Peer Help')">Go to Section</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="dashboard-footer">
+    <p>&copy; 2025 Student Dashboard. All rights reserved.</p>
+  </footer>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

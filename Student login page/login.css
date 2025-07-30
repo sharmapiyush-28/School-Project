@@ -1,116 +1,67 @@
-/* Fonts and Base Styles */
-body {
-    font-family: 'Inter', sans-serif;
-    background-image: url(arturo-rey-Uk2b7mxBi9E-unsplash.jpg);
-    transition: background 0.5s ease-in-out;
-}
 
-/* Container Styling */
-.login-container {
-    animation: fadeInUp 1s ease-out;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
-    background-color: #ffffff;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: url('compare-fibre-Y8TiLvKnLeg-unsplash.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background: rgba(0, 0, 0, 0.4);
 
-/* Input Fields */
-input.input-field {
-    transition: all 0.3s ease;
-    font-size: 1rem;
-    background-color: #f9fafb;
-    border: 1px solid #d1d5db;
-}
+    }
 
-input.input-field:focus {
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: -1;
+    }
 
-/* Login Button */
-.login-button {
-    background-color: #10b981;
-    color: white;
-    font-weight: 600;
-    padding: 0.75rem;
-    border-radius: 0.75rem;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-}
+    .login-container {
+      animation: fadeInUp 1s ease-out;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e5e7eb;
+      background-color: #ffffff;
+    }
 
-.login-button:hover {
-    background-color: #059669;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.25);
-}
+    .logo-illustration:hover {
+      transform: scale(1.05) rotate(1deg);
+      transition: transform 0.4s ease;
+    }
 
-/* Link Text */
-a.link-text {
-    color: #10b981;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-a.link-text:hover {
-    color: #059669;
-    text-decoration: underline;
-}
-
-/* Illustrations and Logo */
-.logo-illustration {
-    transition: transform 0.4s ease;
-}
-
-.logo-illustration:hover {
-    transform: scale(1.05) rotate(1deg);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
+    @keyframes fadeInUp {
+      from {
         opacity: 0;
         transform: translateY(40px);
-    }
-    to {
+      }
+      to {
         opacity: 1;
         transform: translateY(0);
+      }
     }
-}
 
-@keyframes pulseButton {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.03);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-/* Parent Button Special Style */
-.login-container button[type="button"] {
-    font-weight: 600;
-    background-color: #f3f4f6;
-    transition: background-color 0.3s ease;
-}
-
-.login-container button[type="button"]:hover {
-    background-color: #e5e7eb;
-    transform: translateY(-1px);
-}
-
-/* Fade animation for left panel */
-@keyframes fadeInLeft {
-    from {
+    @keyframes fadeInLeft {
+      from {
         opacity: 0;
         transform: translateX(-40px);
-    }
-    to {
+      }
+      to {
         opacity: 1;
         transform: translateX(0);
+      }
     }
-}
 
-.animate-fadeInLeft {
-    animation: fadeInLeft 1.2s ease-out;
-}
+    .animate-fadeInLeft {
+      animation: fadeInLeft 1.2s ease-out;
+    }
+
+    .fade-slide-out {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.4s ease-in;
+    }
+
+    .fade-slide-in {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.5s ease-out;
+    }
