@@ -80,12 +80,9 @@ function initializeHomeworkDisplay() {
 function filterHomework() {
   const now = new Date().getTime();
 
-  currentFilteredHomework = allHomework.filter(hw => hw.dueDate > now)
-                                        .sort((a, b) => {
-                                            if (a.completed && !b.completed) return 1;
-                                            if (!a.completed && b.completed) return -1;
-                                            return a.dueDate - b.dueDate;
-                                        });
+  currentFilteredHomework = allHomework.filter(hw => hw.dueDate > now && !hw.completed)
+                                        .sort((a, b) => a.dueDate - b.dueDate);
+                                        
 
   updateHomeworkFeatureCard();
 }
@@ -93,20 +90,22 @@ function filterHomework() {
 function updateHomeworkFeatureCard() {
   const homeworkFeatureCard = document.getElementById('homeworkFeatureCard');
   const homeworkCountdownElement = document.getElementById('homeworkCountdown');
-  const homeworkFeatureCardButton = homeworkFeatureCard.querySelector('button');
+  const homeworkFeatureCardTitle = homeworkFeatureCard.querySelector('h3');
 
   if (currentFilteredHomework.length > 0) {
-    const nextHomework = currentFilteredHomework.find(hw => !hw.completed) || currentFilteredHomework[0];
+    const nextHomework = currentFilteredHomework[0];
     homeworkFeatureCard.style.display = 'flex';
-    homeworkFeatureCardButton.textContent = "View Details";
+    homeworkFeatureCard.querySelector('button').textContent = "View Details";
 
-    homeworkFeatureCard.querySelector('h3').innerHTML = `<i class="${nextHomework.icon}"></i> ${nextHomework.subject} Homework`;
+    homeworkFeatureCardTitle.innerHTML = `<i class="${nextHomework.icon}"></i> ${nextHomework.subject} Homework`;
 
     startHomeworkCountdownForCard(nextHomework);
 
   } else {
-    homeworkFeatureCard.style.display = 'none';
+    homeworkFeatureCard.style.display = 'flex';
+    homeworkFeatureCardTitle.innerHTML = `<i class="fas fa-clipboard-check"></i> Today's Homework`;
     homeworkCountdownElement.textContent = "No active homework today!";
+    homeworkFeatureCard.querySelector('button').textContent = "Check All";
     if (homeworkCountdownInterval) {
         clearInterval(homeworkCountdownInterval);
     }
@@ -150,7 +149,10 @@ function showHomeworkDetails() {
 
   homeworkDetailsListDiv.innerHTML = '';
 
-  if (currentFilteredHomework.length === 0) {
+  const allIncompleteHomework = allHomework.filter(hw => !hw.completed);
+  const allCompletedHomework = allHomework.filter(hw => hw.completed);
+
+  if (allIncompleteHomework.length === 0 && allCompletedHomework.length === 0) {
     modalHomeworkTitle.textContent = "No Active Homework";
     homeworkDetailsListDiv.innerHTML = '<p class="no-homework-message">There is no active homework right now.</p>';
     modalCountdownElement.textContent = '';
@@ -158,23 +160,56 @@ function showHomeworkDetails() {
         clearInterval(homeworkCountdownInterval);
     }
   } else {
-    modalHomeworkTitle.textContent = "All Active Homework";
+    modalHomeworkTitle.textContent = "All Homework";
 
-    currentFilteredHomework.forEach(hw => {
-      const homeworkItemDiv = document.createElement('div');
-      homeworkItemDiv.classList.add('homework-item-in-modal');
-      if (hw.completed) {
-          homeworkItemDiv.classList.add('completed');
-      }
-      homeworkItemDiv.dataset.homeworkId = hw.id;
+    // Display incomplete homework first
+    allIncompleteHomework.sort((a, b) => a.dueDate - b.dueDate).forEach(hw => {
+      renderHomeworkItem(hw, homeworkDetailsListDiv);
+    });
 
-      const formattedDueDate = new Date(hw.dueDate).toLocaleString('en-IN', {
-          day: 'numeric', month: 'long', year: 'numeric',
-          hour: '2-digit', minute: '2-digit', hour12: true,
-          timeZoneName: 'short'
-      });
+    // Display completed homework with a separator
+    if (allCompletedHomework.length > 0) {
+        const separator = document.createElement('h3');
+        separator.style.marginTop = '40px';
+        separator.style.borderTop = '2px solid #ccc';
+        separator.style.paddingTop = '20px';
+        separator.textContent = "Completed Homework";
+        homeworkDetailsListDiv.appendChild(separator);
 
-      homeworkItemDiv.innerHTML = `
+        allCompletedHomework.forEach(hw => {
+            renderHomeworkItem(hw, homeworkDetailsListDiv);
+        });
+    }
+
+    const soonestIncomplete = allIncompleteHomework.find(hw => !hw.completed);
+    if (soonestIncomplete) {
+        startHomeworkCountdownForModal(soonestIncomplete);
+    } else {
+        modalCountdownElement.textContent = "All homework completed!";
+        if (homeworkCountdownInterval) {
+            clearInterval(homeworkCountdownInterval);
+        }
+    }
+  }
+  
+  modal.style.display = 'block';
+}
+
+function renderHomeworkItem(hw, container) {
+    const homeworkItemDiv = document.createElement('div');
+    homeworkItemDiv.classList.add('homework-item-in-modal');
+    if (hw.completed) {
+        homeworkItemDiv.classList.add('completed');
+    }
+    homeworkItemDiv.dataset.homeworkId = hw.id;
+
+    const formattedDueDate = new Date(hw.dueDate).toLocaleString('en-IN', {
+        day: 'numeric', month: 'long', year: 'numeric',
+        hour: '2-digit', minute: '2-digit', hour12: true,
+        timeZoneName: 'short'
+    });
+
+    homeworkItemDiv.innerHTML = `
         <h3><i class="${hw.icon || 'fas fa-book'}"></i> ${hw.subject} - ${hw.topic}</h3>
         <p><strong>Assignment:</strong> ${hw.assignment}</p>
         <p><strong>Due Date:</strong> ${formattedDueDate}</p>
@@ -191,22 +226,8 @@ function showHomeworkDetails() {
                 `
             }
         </div>
-      `;
-      homeworkDetailsListDiv.appendChild(homeworkItemDiv);
-    });
-
-    const soonestIncomplete = currentFilteredHomework.find(hw => !hw.completed);
-    if (soonestIncomplete) {
-        startHomeworkCountdownForModal(soonestIncomplete);
-    } else {
-        modalCountdownElement.textContent = "All active homework completed!";
-        if (homeworkCountdownInterval) {
-            clearInterval(homeworkCountdownInterval);
-        }
-    }
-  }
-
-  modal.style.display = 'block';
+    `;
+    container.appendChild(homeworkItemDiv);
 }
 
 function startHomeworkCountdownForModal(homeworkItem) {
@@ -263,10 +284,10 @@ window.onclick = function(event) {
   const homeworkModal = document.getElementById('homeworkModal');
   const calendarModal = document.getElementById('calendarModal');
 
-  if (event.target == homeworkModal) {
+  if (event.target === homeworkModal) {
     closeHomeworkModal();
   }
-  if (event.target == calendarModal) {
+  if (event.target === calendarModal) {
     closeCalendarModal();
   }
 }
@@ -391,16 +412,22 @@ function renderCalendar() {
     for (let day = 1; day <= daysInMonth; day++) {
         const dayDiv = document.createElement('div');
         dayDiv.classList.add('calendar-day');
-        dayDiv.innerHTML = `<span class="day-number">${day}</span>`;
-        dayDiv.dataset.date = `${year}-${month + 1}-${day}`; // Store date for lookup
+        
+        const dateString = `${year}-${month + 1}-${day}`;
+        dayDiv.dataset.date = dateString; // Store date for lookup
 
         // Mark today's date
         if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
             dayDiv.classList.add('today');
             if (selectedCalendarDate === null) { // Auto-select today if nothing else is selected
-                selectedCalendarDate = dayDiv.dataset.date;
+                selectedCalendarDate = dateString;
             }
         }
+
+        const dayNumberSpan = document.createElement('span');
+        dayNumberSpan.classList.add('day-number');
+        dayNumberSpan.textContent = day;
+        dayDiv.appendChild(dayNumberSpan);
 
         // Add events indicators
         const eventsForThisDay = getEventsForDate(dayDiv.dataset.date, true); // Get count for indicators
@@ -513,10 +540,10 @@ window.onclick = function(event) {
   const homeworkModal = document.getElementById('homeworkModal');
   const calendarModal = document.getElementById('calendarModal');
 
-  if (event.target === homeworkModal) { // Use strict equality
+  if (event.target === homeworkModal) {
     closeHomeworkModal();
   }
-  if (event.target === calendarModal) { // Use strict equality
+  if (event.target === calendarModal) {
     closeCalendarModal();
   }
 }

@@ -9,7 +9,7 @@
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="dashboard-header">
@@ -35,7 +35,7 @@
           </div>
         </div>
         <span title="Current Streak 🔥">
-          <i>🔥 7</i>
+          <i class="fas fa-fire"></i> 7
         </span>
       </div>
       <a href="profile.html" class="profile">
@@ -56,8 +56,8 @@
           <h3>Math</h3>
           <div class="circular-progress" data-progress="70">
             <svg>
-              <circle cx="45" cy="45" r="39"></circle>
-              <circle class="progress-ring" cx="45" cy="45" r="39"></circle>
+              <circle cx="50" cy="50" r="45"></circle>
+              <circle class="progress-ring" cx="50" cy="50" r="45"></circle>
             </svg>
             <div class="progress-value">0%</div>
           </div>
@@ -68,8 +68,8 @@
           <h3>Science</h3>
           <div class="circular-progress" data-progress="55">
             <svg>
-              <circle cx="45" cy="45" r="39"></circle>
-              <circle class="progress-ring" cx="45" cy="45" r="39"></circle>
+              <circle cx="50" cy="50" r="45"></circle>
+              <circle class="progress-ring" cx="50" cy="50" r="45"></circle>
             </svg>
             <div class="progress-value">0%</div>
           </div>
@@ -80,8 +80,8 @@
           <h3>English</h3>
           <div class="circular-progress" data-progress="80">
             <svg>
-              <circle cx="45" cy="45" r="39"></circle>
-              <circle class="progress-ring" cx="45" cy="45" r="39"></circle>
+              <circle cx="50" cy="50" r="45"></circle>
+              <circle class="progress-ring" cx="50" cy="50" r="45"></circle>
             </svg>
             <div class="progress-value">0%</div>
           </div>
@@ -92,8 +92,8 @@
           <h3>History</h3>
           <div class="circular-progress" data-progress="40">
             <svg>
-              <circle cx="45" cy="45" r="39"></circle>
-              <circle class="progress-ring" cx="45" cy="45" r="39"></circle>
+              <circle cx="50" cy="50" r="45"></circle>
+              <circle class="progress-ring" cx="50" cy="50" r="45"></circle>
             </svg>
             <div class="progress-value">0%</div>
           </div>
@@ -104,7 +104,7 @@
 
     <section class="features">
       <div class="feature" style="--feature-delay: 0s;">
-        <h3>🧠 Daily Brain Boost</h3>
+        <h3><i class="fas fa-brain"></i> Daily Brain Boost</h3>
         <p>Solve today's puzzle!</p>
         <button onclick="playNow()">Play Now</button>
       </div>
@@ -116,22 +116,22 @@
       </div>
 
       <div class="feature" style="--feature-delay: 0.2s;">
-        <h3>🔥 My Streak: 7 Days!</h3>
+        <h3><i class="fas fa-fire"></i> My Streak: 7 Days!</h3>
         <p>Keep your streak alive with daily questions!</p>
         <button onclick="goToSection('Streak')">Boost Streak</button>
       </div>
       <div class="feature" style="--feature-delay: 0.3s;">
-        <h3>🤖 AI Study Buddy</h3>
+        <h3><i class="fas fa-robot"></i> AI Study Buddy</h3>
         <p>Need help? Ask your buddy!</p>
         <button onclick="chatNow()">Chat Now</button>
       </div>
       <div class="feature" style="--feature-delay: 0.4s;">
-        <h3>📅 School Calendar</h3>
+        <h3><i class="fas fa-calendar-alt"></i> School Calendar</h3>
         <p>Upcoming: Math Quiz (Aug 15)</p>
         <button onclick="openCalendarModal()">View Full Calendar</button>
       </div>
       <div class="feature" style="--feature-delay: 0.5s;">
-        <h3>🤝 Help a Peer</h3>
+        <h3><i class="fas fa-handshake"></i> Help a Peer</h3>
         <p>Support your classmates!</p>
         <button onclick="goToSection('Peer Help')">Go to Section</button>
       </div>
@@ -166,7 +166,7 @@
           <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
         </div>
         <div id="calendarDays" class="calendar-days">
-          </div>
+        </div>
       </div>
 
       <div class="calendar-controls">
@@ -177,7 +177,7 @@
             <button class="filter-btn" data-filter="exam"><i class="fas fa-scroll"></i> Exams</button>
             <button class="filter-btn" data-filter="holiday"><i class="fas fa-umbrella-beach"></i> Holidays</button>
             <button class="filter-btn" data-filter="event"><i class="fas fa-calendar-check"></i> Events</button>
-            </div>
+        </div>
       </div>
 
       <div id="calendarEventDetails" class="calendar-event-details">
@@ -200,7 +200,7 @@
     document.addEventListener('click', function (e) {
       const notif = document.querySelector('.notification');
       const box = document.getElementById('notificationBox');
-      if (!notif.contains(e.target)) {
+      if (!notif.contains(e.target) && !box.contains(e.target)) {
         box.style.display = 'none';
       }
     });
@@ -215,14 +215,13 @@
         const text = circleWrapper.querySelector(".progress-value");
 
         // These values should match your CSS .circular-progress circle
-        const radius = 39; // Hardcoded radius from CSS
+        const radius = 45; // Adjusted radius for the new 100px width/height and 10px stroke-width
         const circumference = 2 * Math.PI * radius;
         circle.style.strokeDasharray = `${circumference}`;
         circle.style.strokeDashoffset = `${circumference}`;
-        // Set stroke and fill properties directly in JS if they are not consistently applied by CSS or for specific animations
-        circle.style.stroke = "#4caf50"; // Green color
+        circle.style.stroke = "#4caf50";
         circle.style.fill = "none";
-        circle.style.strokeWidth = "12"; // Match CSS stroke-width
+        circle.style.strokeWidth = "10";
 
         let current = 0;
         const step = () => {
@@ -259,7 +258,6 @@
     function chatNow() {
       alert('Opening AI Study Buddy chat!');
     }
-
   </script>
   <script src="dashboard.js"></script>
 </body>

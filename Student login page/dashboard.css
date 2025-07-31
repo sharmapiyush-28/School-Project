@@ -2,20 +2,20 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif; /* A modern and highly readable font */
+  font-family: 'Inter', sans-serif;
   background-image: url('DASHBOARD BACKGROUND.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: #2c3e50; /* Darker, sophisticated text color */
+  color: #2c3e50;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 /* Background overlay for better readability and depth */
@@ -26,60 +26,60 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1); /* Slightly lighter overlay for less darkening */
-  backdrop-filter: blur(0px); /* Blur removed completely */
+  background-color: rgba(0, 0, 0, 0.15); /* Slightly darker overlay for richer background */
+  backdrop-filter: blur(0px);
   z-index: -1;
 }
 
 /* --- HEADER --- */
 .dashboard-header {
-  background: rgba(255, 255, 255, 0.95); /* Less transparent, more solid */
+  background: rgba(255, 255, 255, 0.95);
   color: #333;
-  padding: 25px 50px; /* More padding */
+  padding: 25px 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Stronger, softer shadow */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom-left-radius: 15px; /* Rounded bottom corners */
+  border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  animation: slideInDown 0.8s ease-out; /* Header animation */
+  animation: slideInDown 0.8s ease-out;
 }
 
 .user-info h1 {
   margin: 0;
-  font-size: 36px; /* Larger heading */
+  font-size: 36px;
   color: #333;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   animation: fadeInDown 1s ease;
 }
 
 .student-name {
-  color: #007bff; /* A more standard vibrant blue */
-  font-weight: 700; /* Bolder name */
-  animation: pulseColor 2s infinite ease-in-out alternate; /* Pulsating color effect */
+  color: #007bff;
+  font-weight: 700;
+  animation: pulseColor 2s infinite ease-in-out alternate;
 }
 
 .profile-section {
   display: flex;
   align-items: center;
-  gap: 20px; /* More space */
+  gap: 20px;
 }
 
 .profile-img {
-  width: 60px; /* Larger profile image */
+  width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #007bff; /* Vibrant border color */
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4); /* Blue glow */
+  border: 4px solid #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-img:hover {
-  transform: scale(1.05) rotate(5deg); /* Slight rotation on hover */
+  transform: scale(1.05) rotate(5deg);
   box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
 }
 
@@ -90,14 +90,14 @@ body::before {
 }
 
 .stats span {
-  font-weight: 600; /* Medium bold */
-  color: #007bff; /* Consistent blue */
-  font-size: 19px; /* Slightly larger */
+  font-weight: 600;
+  color: #007bff;
+  font-size: 19px;
   transition: color 0.3s ease;
 }
 
 .stats span:hover {
-  color: #0056b3; /* Darker blue on hover */
+  color: #0056b3;
 }
 
 .notification {
@@ -106,10 +106,10 @@ body::before {
 }
 
 .notification i {
-  font-size: 24px; /* Larger icon */
+  font-size: 24px;
   color: #555;
   transition: transform 0.3s ease, color 0.3s ease;
-  animation: notificationBell 2s ease-in-out infinite; /* Custom bell animation */
+  animation: notificationBell 2s ease-in-out infinite;
 }
 
 .notification i:hover {
@@ -119,24 +119,24 @@ body::before {
 
 .notification-box {
   position: absolute;
-  top: 60px; /* Adjust positioning based on larger header */
+  top: 60px;
   right: 0;
-  width: 280px; /* Slightly wider */
+  width: 280px;
   background: #fff;
   color: #333;
-  border-radius: 12px; /* More rounded */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   padding: 20px;
   z-index: 1001;
   display: none;
-  animation: fadeInScale 0.4s ease-out forwards; /* New animation for box */
-  border: 1px solid #eee; /* Subtle border */
+  animation: fadeInScale 0.4s ease-out forwards;
+  border: 1px solid #eee;
 }
 
 .notification-box h4 {
   margin: 0 0 12px;
   font-size: 18px;
-  border-bottom: 2px solid #e0e0e0; /* Thicker border */
+  border-bottom: 2px solid #e0e0e0;
   padding-bottom: 8px;
   color: #007bff;
 }
@@ -148,14 +148,14 @@ body::before {
 }
 
 .notification-box ul li {
-  font-size: 15px; /* Slightly larger text */
+  font-size: 15px;
   padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0; /* Lighter border */
+  border-bottom: 1px solid #f0f0f0;
   transition: background-color 0.2s ease;
 }
 
 .notification-box ul li:hover {
-  background-color: #f8faff; /* Light background on hover */
+  background-color: #f8faff;
 }
 
 .notification-box ul li:last-child {
@@ -163,13 +163,13 @@ body::before {
 }
 
 #markReadBtn {
-  margin-top: 15px; /* More margin */
+  margin-top: 15px;
   width: 100%;
-  padding: 10px 15px; /* Larger button */
+  padding: 10px 15px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px; /* More rounded */
+  border-radius: 8px;
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
@@ -194,7 +194,6 @@ body::before {
   color: #555;
   text-align: center;
   border-radius: 8px;
-  /* Background and box-shadow remain removed for a cleaner look */
 }
 
 .quote p {
@@ -204,11 +203,11 @@ body::before {
   line-height: 1.6;
   color: #030000;
   padding-left: 100%;
-  animation: marquee 60s linear infinite; /* Increased time to 60 seconds */
+  animation: marquee 60s linear infinite;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
-/* --- SUBJECTS SECTION --- */
+/* --- SUBJECTS SECTION (Updated Design) --- */
 .subjects h2 {
   text-align: center;
   font-size: 40px;
@@ -228,107 +227,136 @@ body::before {
 }
 
 .card {
-  background-color: rgba(255, 255, 255, 0.95);
-  color: #333;
-  border-radius: 20px;
-  padding: 20px; /* Reduced padding for smaller size */
-  width: 200px; /* Smaller fixed width for subjects */
+  /* NEW: Glassmorphism/frosted glass effect */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px; /* Slightly more rounded corners for a softer feel */
+  padding: 25px; /* Increased padding */
+  width: 220px;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Slightly lighter shadow */
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Enhanced transition */
+  /* NEW: Multi-layered, more complex shadow for a deeper lift effect */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.08); /* More visible subtle border */
   animation: cardPopIn 0.8s ease forwards var(--card-delay, 0s);
   opacity: 0;
 }
 
-/* Subtle background pattern on cards */
+/* NEW: Subtle border glow on hover */
 .card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 27px;
+  background: linear-gradient(45deg, #007bff, #00bfff);
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* NEW: Inner shadow for a pressed/inset look on hover */
+.card::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 100% 0%, rgba(0, 123, 255, 0.03) 5%, transparent 15%), /* Softer pattern */
-              radial-gradient(circle at 0% 100%, rgba(255, 215, 0, 0.03) 5%, transparent 15%);
-  z-index: -1;
+  border-radius: 25px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.5s ease;
+  pointer-events: none;
+}
+
+.card:hover::after {
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .card h3 {
-  font-size: 22px; /* Reduced heading size for smaller cards */
-  margin-bottom: 10px;
-  color: #007bff; /* Consistent blue */
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #007bff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .card p {
-  font-size: 1em; /* Reduced text size for smaller cards */
-  margin-bottom: 15px;
-  color: #555;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02); /* Reduced lift and scale on hover */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18); /* Stronger shadow on hover */
+  transform: translateY(-10px) scale(1.03); /* More pronounced lift on hover */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .card button {
   margin-top: 15px;
-  padding: 10px 18px; /* Reduced button padding */
-  background: linear-gradient(45deg, #007bff, #0056b3); /* Blue gradient */
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #007bff, #00bfff);
   color: white;
   border: none;
-  border-radius: 10px; /* More rounded */
+  border-radius: 50px; /* Pill shape */
   cursor: pointer;
   font-weight: 700;
-  font-size: 16px; /* Reduced button font size */
-  letter-spacing: 0.5px; /* More spacing */
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .card button:hover {
-  background: linear-gradient(45deg, #0056b3, #003d80);
-  transform: translateY(-2px) scale(1.01); /* Reduced lift and scale on hover */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
 }
 
-/* --- CIRCULAR PROGRESS --- */
+/* --- CIRCULAR PROGRESS (Updated for the new card design) --- */
 .circular-progress {
   position: relative;
-  width: 90px; /* Set to 90px, same as svg for consistency */
-  height: 90px; /* Set to 90px, same as svg for consistency */
-  margin: 0 auto 15px;
-  display: flex; /* Use flexbox to center content */
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .circular-progress svg {
-  width: 90px; /* Explicitly set width */
-  height: 90px; /* Explicitly set height */
+  width: 100px;
+  height: 100px;
   transform: rotate(-90deg);
 }
 
 .circular-progress circle {
   fill: none;
-  stroke-width: 12; /* Thicker stroke */
+  stroke-width: 10;
   stroke-linecap: round;
-  r: 39; /* Adjusted radius for 90px width/height and 12px stroke-width */
-  cx: 45; /* Centered */
-  cy: 45; /* Centered */
+  r: 45;
+  cx: 50;
+  cy: 50;
 }
 
 .circular-progress circle:first-child {
-  stroke: #e0e0e0; /* Lighter background stroke */
+  stroke: rgba(0, 0, 0, 0.1);
 }
 
-.circular-progress circle:last-child {
-  stroke: #4CAF50; /* Green color */
-  stroke-dasharray: 245.044; /* Adjusted for radius 39 (2 * PI * 39) */
-  stroke-dashoffset: 245.044; /* Initial state for animation */
-  transition: stroke-dashoffset 1s ease-out; /* Smooth transition */
+.progress-ring { /* New class for the animated ring */
+  stroke: #4CAF50;
+  stroke-dasharray: 282.74;
+  stroke-dashoffset: 282.74;
+  transition: stroke-dashoffset 1s ease-out;
 }
 
 .progress-value {
@@ -336,12 +364,12 @@ body::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-weight: 700; /* Bolder */
-  font-size: 16px; /* Larger */
+  font-weight: 800;
+  font-size: 1.5em;
   color: #333;
 }
 
-/* --- FEATURES SECTION --- */
+/* --- FEATURES SECTION (Updated Design) --- */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -351,57 +379,66 @@ body::before {
 }
 
 .feature {
-  background-color: rgba(255, 255, 255, 0.95);
+  /* NEW: Use the same glassmorphism design for consistency */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #333;
-  padding: 30px; /* Retained larger padding for features */
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 30px;
+  border-radius: 25px; /* Consistent border radius */
+  /* NEW: Same multi-layered shadow as the cards */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   animation: cardPopIn 0.8s ease forwards var(--feature-delay, 0s);
   opacity: 0;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .feature h3 {
-  font-size: 24px; /* Retained larger heading */
-  margin-bottom: 12px;
+  font-size: 26px;
+  margin-bottom: 15px;
   color: #007bff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex; /* For aligning icon and text */
+  align-items: center;
+  gap: 10px;
 }
 
 .feature p {
-  font-size: 1.1em; /* Retained larger text */
+  font-size: 1.1em;
   line-height: 1.6;
   color: #555;
   flex-grow: 1;
 }
 
 .feature:hover {
-  transform: scale(1.02) translateY(-8px);
+  transform: translateY(-10px) scale(1.03);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
 .feature button {
   margin-top: 25px;
   padding: 12px 22px;
-  background: linear-gradient(45deg, #007bff, #0056b3);
+  background: linear-gradient(135deg, #007bff, #00bfff);
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 50px;
   cursor: pointer;
   font-weight: 700;
   font-size: 17px;
-  letter-spacing: 0.8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
 }
 
 .feature button:hover {
-  background: linear-gradient(45deg, #0056b3, #003d80);
+  background: linear-gradient(135deg, #0056b3, #007bff);
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
 }
 
 /* --- FOOTER --- */
@@ -465,45 +502,45 @@ body::before {
 
 /* --- Modals General Styling (Applies to both Homework and Calendar) --- */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 2000; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 2000;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
-  backdrop-filter: blur(5px); /* Blur behind modal */
-  -webkit-backdrop-filter: blur(5px); /* For Safari */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   animation: fadeInModal 0.3s ease-out forwards;
 }
 
 .modal-content {
   background-color: #fefefe;
-  margin: 10% auto; /* 10% from the top and centered */
+  margin: 10% auto;
   padding: 30px;
-  border: 1px solid #ddd; /* Lighter border */
-  width: 80%; /* Could be more responsive */
-  max-width: 650px; /* Slightly wider max width for better content display */
+  border: 1px solid #ddd;
+  width: 80%;
+  max-width: 650px;
   border-radius: 15px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.3);
   position: relative;
-  transform: translateY(-50px); /* For modal entry animation */
+  transform: translateY(-50px);
   animation: slideInModal 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 }
 
 .modal-content h2 {
   color: #007bff;
-  font-size: 2.2em; /* Slightly larger heading */
+  font-size: 2.2em;
   margin-bottom: 20px;
-  border-bottom: 2px solid #e0e0e0; /* Lighter border for heading */
+  border-bottom: 2px solid #e0e0e0;
   padding-bottom: 10px;
   text-align: center;
 }
 
 .close-button {
-  color: #888; /* Slightly darker close button */
+  color: #888;
   position: absolute;
   top: 15px;
   right: 25px;
@@ -514,7 +551,7 @@ body::before {
 
 .close-button:hover,
 .close-button:focus {
-  color: #000; /* Black on hover */
+  color: #000;
   text-decoration: none;
   cursor: pointer;
 }
@@ -677,7 +714,7 @@ body::before {
 
 /* --- Calendar Specific Modal Styles (NEW) --- */
 .modal-content.calendar-content {
-    max-width: 800px; /* Wider for calendar grid */
+    max-width: 800px;
     padding: 20px 30px;
 }
 
@@ -713,7 +750,7 @@ body::before {
 .calendar-grid-container {
     border: 1px solid #e0e0e0;
     border-radius: 10px;
-    overflow: hidden; /* Ensures borders apply nicely */
+    overflow: hidden;
     background-color: #fdfdfd;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
 }
@@ -736,14 +773,14 @@ body::before {
 .calendar-days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 1px; /* Small gap for cell borders */
-    background-color: #e0e0e0; /* Border color for cells */
+    gap: 1px;
+    background-color: #e0e0e0;
 }
 
 .calendar-day {
     background-color: white;
     padding: 10px 5px;
-    min-height: 80px; /* Ensure consistent cell height */
+    min-height: 80px;
     text-align: right;
     font-size: 1.1em;
     position: relative;
@@ -753,7 +790,7 @@ body::before {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-end;
-    box-sizing: border-box; /* Include padding in height */
+    box-sizing: border-box;
 }
 
 .calendar-day:hover {
@@ -769,12 +806,12 @@ body::before {
 }
 .calendar-day.prev-month:hover,
 .calendar-day.next-month:hover {
-    background-color: #f5f5f5; /* No hover effect for outside dates */
+    background-color: #f5f5f5;
     transform: none;
 }
 
 .calendar-day.today {
-    background-color: #e3f2fd; /* Light blue for today */
+    background-color: #e3f2fd;
     border: 2px solid #007bff;
     font-weight: bold;
 }
@@ -792,18 +829,18 @@ body::before {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: #4CAF50; /* Default event color */
+    background-color: #4CAF50;
     margin-top: 3px;
-    margin-right: 5px; /* Adjust if day number is too close */
-    display: inline-block; /* Aligns dots */
+    margin-right: 5px;
+    display: inline-block;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 /* Specific event indicator colors */
-.calendar-day .event-indicator.quiz { background-color: #FFC107; } /* Amber */
-.calendar-day .event-indicator.exam { background-color: #E53935; } /* Red */
-.calendar-day .event-indicator.holiday { background-color: #1E88E5; } /* Blue */
-.calendar-day .event-indicator.event { background-color: #8E24AA; } /* Purple */
+.calendar-day .event-indicator.quiz { background-color: #FFC107; }
+.calendar-day .event-indicator.exam { background-color: #E53935; }
+.calendar-day .event-indicator.holiday { background-color: #1E88E5; }
+.calendar-day .event-indicator.event { background-color: #8E24AA; }
 
 
 .calendar-controls {
@@ -833,7 +870,7 @@ body::before {
     color: #555;
     padding: 8px 15px;
     border: 1px solid #ddd;
-    border-radius: 20px; /* Pill shape */
+    border-radius: 20px;
     cursor: pointer;
     font-size: 0.9em;
     font-weight: 500;
@@ -898,7 +935,7 @@ body::before {
 
 .calendar-event-details ul li {
     background-color: white;
-    border-left: 5px solid #007bff; /* Default event border */
+    border-left: 5px solid #007bff;
     padding: 12px 15px;
     margin-bottom: 8px;
     border-radius: 8px;
