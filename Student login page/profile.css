@@ -1,121 +1,231 @@
-/* General Styling */
+/* General Styling - Keeping most of yours, with slight tweaks */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif; /* A more modern font */
   background-image: url('DASHBOARD\ BACKGROUND.jpg');
+  background-size: cover; /* Ensure background covers the whole area */
+  background-attachment: fixed; /* Fix background during scroll */
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  color: #333; /* Darker text for better readability */
 }
 
+/* --- Header --- */
 header {
-  background-color: #333;
+  background-color: rgba(33, 33, 33, 0.95); /* Slightly transparent dark header */
   color: white;
-  padding: 1em;
+  padding: 1.2em 2em; /* More padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Subtle shadow */
+  position: sticky; /* Make header sticky */
+  top: 0;
+  z-index: 1000; /* Ensure header stays on top */
 }
 
 header a {
-  color: #fff;
+  color: #e0e0e0;
   text-decoration: none;
-  margin: 0 1rem;
-  transition: color 0.3s ease;
+  margin: 0 1.2rem;
+  transition: all 0.3s ease-in-out; /* Smoother transition */
+  font-weight: 500; /* Slightly bolder */
 }
 
 header a:hover {
-  color: #ffcc00;
+  color: #ffda47; /* Brighter gold on hover */
+  transform: translateY(-2px); /* Slight lift effect */
 }
 
+/* --- Main Container --- */
 .container {
-  padding: 2rem;
-  max-width: 1200px;
+  padding: 2.5rem 2rem; /* More vertical padding */
+  max-width: 1280px; /* Slightly wider container */
   margin: auto;
 }
 
+/* --- Section Styling --- */
 .section {
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px; /* Slightly more rounded corners */
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Stronger, softer shadow */
+  margin-bottom: 2.5rem;
+  padding: 2rem; /* More internal padding */
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother animation curve */
+  overflow: hidden; /* Important for inner animations */
 }
 
 .section:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transform: translateY(-8px); /* More pronounced lift */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* More prominent shadow on hover */
 }
 
 .grid-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-
-.avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ccc, #aaa);
-  display: block;
-  margin-bottom: 1rem;
-  transition: transform 0.4s ease;
-  
-  /* ✅ New border added */
-  border: 2px solid #090d14; /* Green border */
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Optional subtle glow */
-}
-
-
-.avatar:hover {
-  transform: rotate(5deg) scale(1.05);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 2rem; /* More space between grid items */
 }
 
 h2 {
   margin-top: 0;
-  font-size: 1.4rem;
+  font-size: 1.8rem; /* Larger headings */
+  color: #2c3e50; /* Darker, more prominent heading color */
+  border-bottom: 2px solid #f0f0f0; /* Subtle underline */
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
+/* --- Badge Styling --- */
 .badge {
   display: inline-block;
-  padding: 0.5rem;
-  background: gold;
-  margin: 0.3rem;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: transform 0.3s ease;
+  padding: 0.6em 1em; /* More padding for badges */
+  background: linear-gradient(45deg, #ffd700, #ffac33); /* Gold gradient */
+  color: #333; /* Dark text on gold */
+  margin: 0.4rem;
+  border-radius: 20px; /* Pill-shaped badges */
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .badge:hover {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(2deg); /* More dynamic hover */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .badge.grey {
-  background: #ccc;
+  background: linear-gradient(45deg, #e0e0e0, #bdbdbd); /* Grey gradient */
   color: #555;
 }
 
+/* --- Progress Bar --- */
 .bar {
-  height: 20px;
-  background: #eee;
-  border-radius: 5px;
+  height: 25px; /* Taller bar */
+  background: #e0e0e0;
+  border-radius: 12px; /* More rounded */
   overflow: hidden;
-  margin: 0.5rem 0 1rem;
+  margin: 0.8rem 0 1.5rem;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Inner shadow */
 }
 
 .bar-inner {
   height: 100%;
-  background: #4caf50;
+  background: linear-gradient(to right, #4CAF50, #8BC34A); /* Green gradient */
   color: white;
   text-align: center;
-  line-height: 20px;
-  width: 0%;
+  line-height: 25px;
+  width: 0%; /* Initial state for animation */
+  border-radius: 12px 0 0 12px; /* Rounded only on left side initially */
+  transition: width 1s ease-out; /* Smooth width transition */
+  position: relative;
+  overflow: hidden;
 }
 
-/* Animation */
+/* Add a subtle shine effect to the bar-inner */
+.bar-inner::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  transform: translateX(-100%);
+  animation: shine 2s infinite linear;
+}
+
+@keyframes shine {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.fade-up p {
+  margin: 8px 0; /* More spacing for text */
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* --- Profile Card (Redesigned for better layout) --- */
+.profile-card {
+  display: flex;
+  flex-direction: column; /* Stack vertically on small screens */
+  gap: 32px;
+  background: #fff;
+  padding: 40px; /* More padding */
+  border-radius: 20px; /* More rounded corners */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Stronger, softer shadow */
+  align-items: center; /* Center items horizontally initially */
+  max-width: 1100px; /* Slightly wider */
+  margin: 40px auto;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #eee; /* Subtle border */
+}
+
+@media (min-width: 768px) {
+  .profile-card {
+    flex-direction: row; /* Side-by-side on larger screens */
+    align-items: flex-start; /* Align to top when side-by-side */
+  }
+}
+
+.profile-left {
+  flex: 0 0 200px; /* Fixed width for left section */
+  text-align: center;
+  position: relative;
+  padding-right: 30px; /* Space between avatar and text */
+}
+
+.avatar {
+  width: 160px; /* Larger avatar */
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid #2196f3; /* Thicker, vibrant border */
+  box-shadow: 0 0 0 8px rgba(33, 150, 243, 0.3), 0 0 20px rgba(0, 0, 0, 0.2); /* Outer glow and shadow */
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bounce effect */
+}
+
+.avatar:hover {
+  transform: scale(1.08) rotate(3deg); /* More pronounced effect */
+}
+
+.profile-left h3 {
+  margin-top: 15px;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+.profile-left p {
+  color: #777;
+  font-size: 1rem;
+}
+
+.profile-right {
+  flex: 1; /* Takes remaining space */
+  font-size: 1.1rem; /* Slightly larger text */
+  line-height: 1.7;
+  padding-left: 30px; /* Align with profile-left padding-right */
+  border-left: 1px dashed #e0e0e0; /* Visual separator */
+}
+
+@media (max-width: 767px) {
+  .profile-right {
+    border-left: none; /* No border on small screens */
+    padding-left: 0;
+    padding-top: 20px; /* Add some space if stacking */
+    text-align: center; /* Center text when stacked */
+  }
+}
+
+.profile-right p {
+  margin: 8px 0;
+}
+
+/* --- Animations --- */
 .animate-bar {
-  animation: fillBar 1s ease-out forwards;
+  animation: fillBar 1.5s ease-out forwards; /* Slower fill */
 }
 
 @keyframes fillBar {
@@ -123,19 +233,19 @@ h2 {
     width: 0%;
   }
   100% {
-    width: 65%;
+    width: var(--bar-width, 65%); /* Use CSS variable for dynamic width */
   }
 }
 
 .fade-in {
-  animation: fadeIn 1s ease-in forwards;
+  animation: fadeIn 1.2s ease-in forwards; /* Slower fade */
 }
 
 .fade-up {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 0.8s ease-out forwards;
-  animation-delay: 0.2s;
+  transform: translateY(30px); /* More pronounced initial position */
+  animation: fadeUp 1s ease-out forwards;
+  animation-delay: var(--animation-delay, 0.2s); /* Dynamic delay */
 }
 
 @keyframes fadeUp {
@@ -154,22 +264,163 @@ h2 {
   }
 }
 
+/* --- Footer --- */
 .footer {
   text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  color: #777;
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  color: #888;
+  margin-top: 3rem;
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly opaque footer */
+  border-top: 1px solid #eee;
 }
 
-canvas {
-  width: 100% !important;
-  height: auto !important;
-}
-
+/* --- Chart Container --- */
 .chart-container {
-  max-width: 300px;
-  margin-top: 1rem;
+  max-width: 350px; /* Slightly larger chart */
+  margin: 1.5rem auto 0 auto; /* Center chart and add margin */
   aspect-ratio: 1 / 1;
   position: relative;
+  background: #fdfdfd;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
+/* --- Score Table --- */
+.score-table {
+  width: 100%;
+  border-collapse: separate; /* Allows for border-radius on cells */
+  border-spacing: 0; /* Remove default cell spacing */
+  margin-top: 1.5em;
+  font-size: 1.05rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.07); /* Softer shadow */
+  animation: fadeInUp 1.2s ease-in-out;
+  border-radius: 12px; /* Rounded table corners */
+  overflow: hidden; /* Ensures inner content respects border-radius */
+}
+
+.score-table th, .score-table td {
+  padding: 1.1em 1.5em; /* More padding */
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0; /* Lighter border */
+}
+
+.score-table thead {
+  background-color: #4a90e2; /* Blue header */
+  color: rgb(8, 4, 4);
+}
+
+.score-table th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.score-table th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.score-table tr:last-child td {
+  border-bottom: none; /* No bottom border on last row */
+}
+
+.score-table tr:nth-child(even) {
+  background-color: #f7f7f7; /* Zebra striping */
+}
+
+.score-table tr:hover {
+  background-color: #e6f3ff; /* Lighter blue on hover */
+  transform: scale(1.005); /* Subtle scale on hover */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 1; /* Bring hovered row slightly to front */
+}
+
+.score-table td:last-child {
+  font-weight: 700; /* Bolder score */
+  color: #2c3e50; /* Darker score color */
+}
+
+/* --- Overall Summary --- */
+.overall-summary {
+  margin-top: 2em; /* More top margin */
+  background-color: #e8f5e9; /* Light green background */
+  border-left: 6px solid #4CAF50; /* Green border */
+  padding: 1.5em; /* More padding */
+  font-size: 1.15rem; /* Slightly larger text */
+  border-radius: 8px; /* More rounded */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07); /* Softer shadow */
+  line-height: 1.7;
+}
+
+.overall-summary p {
+  margin: 0.6em 0;
+  color: #384d38; /* Darker green text */
+}
+
+/* --- Fade-up Animation (General) --- */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 1.2s ease-out forwards; /* Adjusted timing */
+}
+
+/* --- Streak Box --- */
+.streak-box {
+  background: linear-gradient(135deg, #f0f9e9, #c3e6b2); /* Softer green gradient */
+  padding: 1.8em; /* More padding */
+  border-radius: 15px; /* More rounded */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12); /* More prominent shadow */
+  font-size: 1.1rem; /* Slightly larger text */
+  line-height: 1.7;
+  animation: fadeInUp 1.2s ease-in-out;
+  color: #3a5e3a; /* Darker green text */
+  border: 1px solid rgba(195, 230, 178, 0.5); /* Subtle border */
+}
+
+.streak-box .highlight {
+  color: #e53935; /* Stronger red highlight */
+  font-weight: 700; /* Bolder highlight */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Subtle text shadow */
+}
+
+.streak-box p {
+  margin: 0.6em 0;
+}
+
+/* Tooltips for extra polish */
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+
+[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 0.5em 0.8em;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  margin-bottom: 10px; /* Space above the element */
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px); /* Lift up slightly */
+}

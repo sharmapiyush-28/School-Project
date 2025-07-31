@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Dashboard</title>
 
-  <!-- Link your custom CSS -->
   <link rel="stylesheet" href="dashboard.css" />
 
-  <!-- Font Awesome for icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="dashboard-header">
@@ -52,48 +52,48 @@
     <section class="subjects">
       <h2>📚 My Subjects</h2>
       <div class="subject-grid">
-        <div class="card">
+        <div class="card" style="--card-delay: 0s;">
           <h3>Math</h3>
           <div class="circular-progress" data-progress="70">
             <svg>
-              <circle cx="40" cy="40" r="35"></circle>
-              <circle class="progress-ring" cx="40" cy="40" r="35"></circle>
+              <circle cx="45" cy="45" r="39"></circle>
+              <circle class="progress-ring" cx="45" cy="45" r="39"></circle>
             </svg>
             <div class="progress-value">0%</div>
           </div>
           <button onclick="viewSubject('Math')">View Subject</button>
         </div>
 
-        <div class="card">
+        <div class="card" style="--card-delay: 0.1s;">
           <h3>Science</h3>
           <div class="circular-progress" data-progress="55">
             <svg>
-              <circle cx="40" cy="40" r="35"></circle>
-              <circle class="progress-ring" cx="40" cy="40" r="35"></circle>
+              <circle cx="45" cy="45" r="39"></circle>
+              <circle class="progress-ring" cx="45" cy="45" r="39"></circle>
             </svg>
             <div class="progress-value">0%</div>
           </div>
           <button onclick="viewSubject('Science')">View Subject</button>
         </div>
 
-        <div class="card">
+        <div class="card" style="--card-delay: 0.2s;">
           <h3>English</h3>
           <div class="circular-progress" data-progress="80">
             <svg>
-              <circle cx="40" cy="40" r="35"></circle>
-              <circle class="progress-ring" cx="40" cy="40" r="35"></circle>
+              <circle cx="45" cy="45" r="39"></circle>
+              <circle class="progress-ring" cx="45" cy="45" r="39"></circle>
             </svg>
             <div class="progress-value">0%</div>
           </div>
           <button onclick="viewSubject('English')">View Subject</button>
         </div>
 
-        <div class="card">
+        <div class="card" style="--card-delay: 0.3s;">
           <h3>History</h3>
           <div class="circular-progress" data-progress="40">
             <svg>
-              <circle cx="40" cy="40" r="35"></circle>
-              <circle class="progress-ring" cx="40" cy="40" r="35"></circle>
+              <circle cx="45" cy="45" r="39"></circle>
+              <circle class="progress-ring" cx="45" cy="45" r="39"></circle>
             </svg>
             <div class="progress-value">0%</div>
           </div>
@@ -103,27 +103,34 @@
     </section>
 
     <section class="features">
-      <div class="feature">
+      <div class="feature" style="--feature-delay: 0s;">
         <h3>🧠 Daily Brain Boost</h3>
         <p>Solve today's puzzle!</p>
         <button onclick="playNow()">Play Now</button>
       </div>
-      <div class="feature">
+
+      <div class="feature" id="homeworkFeatureCard" style="--feature-delay: 0.1s;">
+        <h3><i class="fas fa-clipboard-list"></i> Today's Homework</h3>
+        <p id="homeworkCountdown">Loading...</p>
+        <button onclick="showHomeworkDetails()">View Details</button>
+      </div>
+
+      <div class="feature" style="--feature-delay: 0.2s;">
         <h3>🔥 My Streak: 7 Days!</h3>
         <p>Keep your streak alive with daily questions!</p>
         <button onclick="goToSection('Streak')">Boost Streak</button>
       </div>
-      <div class="feature">
+      <div class="feature" style="--feature-delay: 0.3s;">
         <h3>🤖 AI Study Buddy</h3>
         <p>Need help? Ask your buddy!</p>
         <button onclick="chatNow()">Chat Now</button>
       </div>
-      <div class="feature">
-        <h3>🗕️ School Calendar</h3>
+      <div class="feature" style="--feature-delay: 0.4s;">
+        <h3>📅 School Calendar</h3>
         <p>Upcoming: Math Quiz (Aug 15)</p>
-        <button onclick="viewFullCalendar()">View Full Calendar</button>
+        <button onclick="openCalendarModal()">View Full Calendar</button>
       </div>
-      <div class="feature">
+      <div class="feature" style="--feature-delay: 0.5s;">
         <h3>🤝 Help a Peer</h3>
         <p>Support your classmates!</p>
         <button onclick="goToSection('Peer Help')">Go to Section</button>
@@ -135,7 +142,56 @@
     <p>&copy; 2025 Student Dashboard. All rights reserved.</p>
   </footer>
 
+  <div id="homeworkModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeHomeworkModal()">&times;</span>
+      <h2 id="modalHomeworkTitle">Homework Details</h2>
+      <div id="homeworkDetailsList">
+        <p class="no-homework-message">No active homework right now.</p>
+      </div>
+      <p class="modal-countdown" id="modalCountdown"></p>
+    </div>
+  </div>
+
+  <div id="calendarModal" class="modal">
+    <div class="modal-content calendar-content">
+      <span class="close-button" onclick="closeCalendarModal()">&times;</span>
+      <h2 id="calendarMonthYear"></h2>
+      <div class="calendar-nav">
+        <button onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i> Prev</button>
+        <button onclick="changeMonth(1)">Next <i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="calendar-grid-container">
+        <div class="calendar-weekdays">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div id="calendarDays" class="calendar-days">
+          </div>
+      </div>
+
+      <div class="calendar-controls">
+        <h3>Event Filters</h3>
+        <div class="event-filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Events</button>
+            <button class="filter-btn" data-filter="quiz"><i class="fas fa-clipboard-question"></i> Quizzes</button>
+            <button class="filter-btn" data-filter="exam"><i class="fas fa-scroll"></i> Exams</button>
+            <button class="filter-btn" data-filter="holiday"><i class="fas fa-umbrella-beach"></i> Holidays</button>
+            <button class="filter-btn" data-filter="event"><i class="fas fa-calendar-check"></i> Events</button>
+            </div>
+      </div>
+
+      <div id="calendarEventDetails" class="calendar-event-details">
+          <h3>Events on Selected Date: <span id="selectedDateText">None</span></h3>
+          <ul id="eventList">
+              <li>Click on a date to see events.</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+
+
   <script>
+    // Moved general JS functions here for clarity
     function toggleNotificationBox() {
       const box = document.getElementById('notificationBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
@@ -158,14 +214,15 @@
         const circle = circleWrapper.querySelector(".progress-ring");
         const text = circleWrapper.querySelector(".progress-value");
 
-        const radius = circle.r.baseVal.value;
+        // These values should match your CSS .circular-progress circle
+        const radius = 39; // Hardcoded radius from CSS
         const circumference = 2 * Math.PI * radius;
         circle.style.strokeDasharray = `${circumference}`;
         circle.style.strokeDashoffset = `${circumference}`;
-        circle.style.stroke = "#4caf50";
+        // Set stroke and fill properties directly in JS if they are not consistently applied by CSS or for specific animations
+        circle.style.stroke = "#4caf50"; // Green color
         circle.style.fill = "none";
-        circle.style.strokeWidth = "10";
-        circle.style.transition = "stroke-dashoffset 1.5s ease";
+        circle.style.strokeWidth = "12"; // Match CSS stroke-width
 
         let current = 0;
         const step = () => {
@@ -179,7 +236,30 @@
         };
         step();
       });
+
+      // Initialize Homework functionality on load
+      initializeHomeworkDisplay();
+      // Initialize Calendar functionality on load
+      initializeCalendar();
     });
+
+    // Placeholder functions for buttons
+    function viewSubject(subjectName) {
+      alert(`Viewing ${subjectName} subject!`);
+    }
+
+    function playNow() {
+      alert('Playing Daily Brain Boost!');
+    }
+
+    function goToSection(sectionName) {
+      alert(`Going to ${sectionName} section!`);
+    }
+
+    function chatNow() {
+      alert('Opening AI Study Buddy chat!');
+    }
+
   </script>
   <script src="dashboard.js"></script>
 </body>

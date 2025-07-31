@@ -16,24 +16,32 @@
   </header>
 
   <div class="container fade-in">
-    <div class="grid-2 section">
-      <div class="fade-up">
-        <img class="avatar" src="IMG_20240704_111210-removebg-preview.png" alt="Student Photo">
-        <p><strong>Name:</strong> Piyush Sharma</p>
-        <p><strong>Grade:</strong> 12</p>
-        <p><strong>Class:</strong> 12A</p>
-        <p><strong>School ID:</strong> S12345</p>
-      </div>
-      <div class="fade-up">
-        <h2>Progress Tracker</h2>
-        <p><strong>Overall Completion:</strong></p>
-        <div class="bar">
-          <div class="bar-inner animate-bar" style="width:65%">65%</div>
-        </div>
-        <p><strong>Skills Mastered:</strong> Fractions, Cells</p>
-      </div>
+    <!-- Student Info -->
+  <div class="profile-info">
+    <div class="profile-card">
+  <div class="profile-left">
+    <img class="avatar" src="IMG_20240704_111210-removebg-preview.png" alt="Student Photo">
+  </div>
+
+  <div class="profile-right">
+    <p><strong>Name:</strong> Piyush Sharma</p>
+    <p><strong>Grade:</strong> 12</p>
+    <p><strong>Class:</strong> 12A</p>
+    <p><strong>School ID:</strong> S12345</p>
+    <p><strong>📞 Mobile:</strong> +91 9508645046</p>
+    <p><strong>📧 Email:</strong> sharmapiyush5783@gmail.com</p>
+    <p><strong>🏠 Address:</strong> Guru Nanak Dev University, Amritsar</p>
+  </div>
+</div>
+
+</div>
+
+
+</div>
+
     </div>
 
+    <!-- Time Spent and Streak -->
     <div class="grid-2 section fade-up">
       <div>
         <h2>Time Spent This Week</h2>
@@ -41,12 +49,17 @@
           <canvas id="timeDoughnutChart"></canvas>
         </div>
       </div>
-      <div>
+      <div class="fade-up">
         <h2>🔥 7-Day Streak!</h2>
-        <p>[Streak visual placeholder]</p>
+        <div class="streak-box animate-fade-in">
+          <p><strong>You're on a 7-day learning streak!</strong> 🚀</p>
+          <p>🏅 Your Rank: <span class="highlight">#12</span> out of <span class="highlight">150</span> students</p>
+          <p>🎯 Keep going to reach the Top 10!</p>
+        </div>
       </div>
     </div>
 
+    <!-- Achievements -->
     <div class="section fade-up">
       <h2>🏅 My Achievements & Badges</h2>
       <div class="badge">Completed First Lesson</div>
@@ -55,11 +68,81 @@
       <div class="badge grey">Math Genius (Locked)</div>
     </div>
 
+    <!-- Class Attendance + Progress Tracker moved here -->
     <div class="section fade-up">
       <h2>📊 Class Attendance</h2>
       <p>Total Classes Held: <span id="classesHeld">40</span></p>
       <p>Classes Attended: <span id="classesAttended">36</span></p>
       <p>Attendance %: <span id="attendancePercent">90%</span></p>
+
+      <!-- Progress Tracker moved here -->
+      <div class="progress-section" style="margin-top: 20px;">
+        <h2>📈 Progress Tracker</h2>
+        <p><strong>Overall Completion:</strong></p>
+        <div class="bar">
+          <div class="bar-inner animate-bar" style="width:65%">65%</div>
+        </div>
+        <p><strong>Skills Mastered:</strong> Fractions, Cells</p>
+      </div>
+    </div>
+
+    <!-- Test Scores -->
+    <div class="section fade-up">
+      <h2>📖 Recent Test Scores</h2>
+      <table class="score-table animate-fade-in">
+        <thead>
+          <tr>
+            <th>Test</th>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>Percentage</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mid Term</td>
+            <td>Mathematics</td>
+            <td>85 / 100</td>
+            <td>85%</td>
+            <td>B+</td>
+          </tr>
+          <tr>
+            <td>Mid Term</td>
+            <td>Science</td>
+            <td>88 / 100</td>
+            <td>88%</td>
+            <td>A-</td>
+          </tr>
+          <tr>
+            <td>Mid Term</td>
+            <td>English</td>
+            <td>92 / 100</td>
+            <td>92%</td>
+            <td>A</td>
+          </tr>
+          <tr>
+            <td>Weekly Quiz</td>
+            <td>Biology</td>
+            <td>76 / 100</td>
+            <td>76%</td>
+            <td>B</td>
+          </tr>
+          <tr>
+            <td>Weekly Quiz</td>
+            <td>History</td>
+            <td>80 / 100</td>
+            <td>80%</td>
+            <td>B+</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Overall summary -->
+      <div class="overall-summary animate-fade-in">
+        <p><strong>Overall Percentage:</strong> 84.2%</p>
+        <p><strong>Overall Grade:</strong> B+</p>
+      </div>
     </div>
   </div>
 
